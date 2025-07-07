@@ -1,11 +1,13 @@
-import { useState} from "react";
+import { useState } from "react";
 import Header from "./Header";
 
 import Main from "./Main";
 // --------------------------------
-function FormBuilder() {
+function FormBuilder({}) {
   const [fields, setFields] = useState([]);
-
+  const [selectedFieldId, setSelectedFieldId] = useState(null);
+  const [formTitle, setFormTitle] = useState("");
+  const [formDescription, setFormDescription] = useState("");
   const addField = (type) => {
     const newField = {
       id: Date.now(),
@@ -15,12 +17,20 @@ function FormBuilder() {
     console.log("Adding field:", newField);
     const updatedFields = [...fields, newField];
     setFields(updatedFields);
+    setSelectedFieldId(newField.id);
   };
 
   return (
     <>
       <Header />
-      <Main fields={fields} addField={addField} />
+      <Main
+        fields={fields}
+        addField={addField}
+        formTitle={formTitle}
+        formDescription={formDescription}
+        setFormTitle={setFormTitle}
+        setFormDescription={setFormDescription}
+      />
     </>
   );
 }
