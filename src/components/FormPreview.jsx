@@ -1,6 +1,15 @@
 import RenderPreview from "./RenderPreview";
+import { useLocation } from "react-router-dom";
 import { useEffect, useRef } from "react";
-function FormPreview({ fields,formTitle,formDescription }) {
+function FormPreview(props) {
+  const location = useLocation();
+  const state = location.state || {};
+
+  const fields = props.fields ?? state.fields ?? [];
+  const formTitle = props.formTitle ?? state.formTitle ?? "Untitled Form";
+  const formDescription =
+    props.formDescription ?? state.formDescription ?? "No description";
+
   const lastFieldRef = useRef(null);
   //   to auto-scroll to the last added field i
   useEffect(() => {
@@ -8,14 +17,15 @@ function FormPreview({ fields,formTitle,formDescription }) {
       lastFieldRef.current.scrollIntoView({
         behaviour: "smooth",
       });
-      lastFieldRef.current = null;
     }
   }, [fields.length]);
-  
+
   return (
     <div className="border-l border-gray-300 pl-4">
       <h2 className="text-2xl font-bold mb-4 text-center">Form Preview</h2>
-      <h1 className="text-2xl font-bold mb-4 text-center">Form title - {formTitle}</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">
+        Form title - {formTitle}
+      </h1>
       <p className="text-center mb-4">Form Description - {formDescription}</p>
       {fields.length === 0 && <p>Click a field to add it to the form</p>}
       <div>
@@ -34,7 +44,9 @@ function FormPreview({ fields,formTitle,formDescription }) {
           );
         })}
       </div>
-      <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Submit</button>
+      <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+        Submit
+      </button>
     </div>
   );
 }

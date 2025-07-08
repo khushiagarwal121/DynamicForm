@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Header from "./Header";
 
-import Main from "./Main";
+import MainSection from "./MainSection";
 // --------------------------------
 function FormBuilder({}) {
   const [fields, setFields] = useState([]);
@@ -19,17 +19,29 @@ function FormBuilder({}) {
     setFields(updatedFields);
     setSelectedFieldId(newField.id);
   };
-
+  const updateField = (updatedField) => {
+    const updatedFields = fields.map((field) =>
+      field.id === updatedField.id ? updatedField : field
+    );
+    setFields(updatedFields);
+  };
   return (
     <>
-      <Header />
-      <Main
+      <Header
+        fields={fields}
+        formTitle={formTitle}
+        formDescription={formDescription}
+      />
+      <MainSection
         fields={fields}
         addField={addField}
         formTitle={formTitle}
         formDescription={formDescription}
+        selectedFieldId={selectedFieldId}
+        setSelectedFieldId={setSelectedFieldId}
         setFormTitle={setFormTitle}
         setFormDescription={setFormDescription}
+        updateField={updateField}
       />
     </>
   );

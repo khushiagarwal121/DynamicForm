@@ -1,24 +1,35 @@
 import Sidebar from "./Sidebar";
 import FormPreview from "./FormPreview";
 import CenterCanvas from "./CenterCanvas";
-function Main({
+function MainSection({
   fields,
   addField,
   formTitle,
   formDescription,
+  selectedFieldId,
+  setSelectedFieldId,
   setFormTitle,
   setFormDescription,
+  updateField
 }) {
+  const selectedField = fields.find((f) => f.id === selectedFieldId);
+
   return (
     <div className="flex">
       <Sidebar
+        fields={fields}
         addField={addField}
         formTitle={formTitle}
         setFormTitle={setFormTitle}
         formDescription={formDescription}
         setFormDescription={setFormDescription}
+        selectedFieldId={selectedFieldId}
+        setSelectedFieldId={setSelectedFieldId}
       />
-      <CenterCanvas />
+      <CenterCanvas
+        field={selectedField}
+        updateField={updateField}
+      />
       <FormPreview
         fields={fields}
         formTitle={formTitle}
@@ -27,4 +38,4 @@ function Main({
     </div>
   );
 }
-export default Main;
+export default MainSection;
