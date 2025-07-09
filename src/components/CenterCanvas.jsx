@@ -1,4 +1,7 @@
-function CenterCanvas({ field, updateField }) {
+import { useContext } from "react";
+import { FormContext } from "../context/FormContext";
+function CenterCanvas({field}) {
+  const { updateField } = useContext(FormContext);
   // const selectedField = fields.find((fields) => fields.id === selectedFieldId);
   if (!field)
     return <div className="w-1/3 p-4">Select a field to configure</div>;
@@ -14,22 +17,38 @@ function CenterCanvas({ field, updateField }) {
         Field Configuration
       </h1>
       <div className="flex flex-col">
-        <label>Field Label</label>
-        <input
-          type="text"
-          name="label"
-          value={field.label}
-          onChange={handleChange}
-          className="w-full px-3 py-2 border border-gray-300 rounded"
-        />
-        <label>Placeholder Text</label>
-        <input
-          type="text"
-          name="placeholder"
-          value={field.placeholder || ""}
-          onChange={handleChange}
-          className="w-full px-3 py-2 border border-gray-300 rounded"
-        />
+        <div className="mb-4 mx-8">
+          <label>Field Label</label>
+          <input
+            type="text"
+            name="label"
+            value={field.label}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded"
+          />
+        </div>
+        <div className="mb-4 mx-8">
+          <label>Placeholder Text</label>
+          <input
+            type="text"
+            name="placeholder"
+            value={field.placeholder || ""}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="inline-flex items-center">
+            <input
+              type="checkbox"
+              name="required"
+              checked={field.required || false}
+              onChange={handleChange}
+              className="mr-2"
+            />
+            Required
+          </label>
+        </div>
       </div>
     </div>
   );

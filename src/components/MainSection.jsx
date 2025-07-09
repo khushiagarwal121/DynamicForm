@@ -1,40 +1,17 @@
 import Sidebar from "./Sidebar";
 import FormPreview from "./FormPreview";
 import CenterCanvas from "./CenterCanvas";
-function MainSection({
-  fields,
-  addField,
-  formTitle,
-  formDescription,
-  selectedFieldId,
-  setSelectedFieldId,
-  setFormTitle,
-  setFormDescription,
-  updateField
-}) {
+import { useContext } from "react";
+import { FormContext } from "../context/FormContext";
+function MainSection() {
+  const { fields, selectedFieldId } = useContext(FormContext);
   const selectedField = fields.find((f) => f.id === selectedFieldId);
 
   return (
     <div className="flex">
-      <Sidebar
-        fields={fields}
-        addField={addField}
-        formTitle={formTitle}
-        setFormTitle={setFormTitle}
-        formDescription={formDescription}
-        setFormDescription={setFormDescription}
-        selectedFieldId={selectedFieldId}
-        setSelectedFieldId={setSelectedFieldId}
-      />
-      <CenterCanvas
-        field={selectedField}
-        updateField={updateField}
-      />
-      <FormPreview
-        fields={fields}
-        formTitle={formTitle}
-        formDescription={formDescription}
-      />
+      <Sidebar />
+      <CenterCanvas field={selectedField} />
+      <FormPreview />
     </div>
   );
 }

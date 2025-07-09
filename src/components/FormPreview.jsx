@@ -1,14 +1,16 @@
 import RenderPreview from "./RenderPreview";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import { useEffect, useRef } from "react";
-function FormPreview(props) {
-  const location = useLocation();
-  const state = location.state || {};
+import { useContext } from "react";
+import { FormContext } from "../context/FormContext";
+function FormPreview() {
+  const { fields, formTitle, formDescription } = useContext(FormContext);
+  // const state = location.state || {};
 
-  const fields = props.fields ?? state.fields ?? [];
-  const formTitle = props.formTitle ?? state.formTitle ?? "Untitled Form";
-  const formDescription =
-    props.formDescription ?? state.formDescription ?? "No description";
+  // const fields = props.fields ?? state.fields ?? [];
+  // const formTitle = props.formTitle ?? state.formTitle ?? "Untitled Form";
+  // const formDescription =
+  //   props.formDescription ?? state.formDescription ?? "No description";
 
   const lastFieldRef = useRef(null);
   //   to auto-scroll to the last added field i

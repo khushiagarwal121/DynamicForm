@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Header from "./Header";
-
 import MainSection from "./MainSection";
+import { FormContext } from "../context/FormContext";
 // --------------------------------
 function FormBuilder({}) {
   const [fields, setFields] = useState([]);
@@ -26,24 +26,23 @@ function FormBuilder({}) {
     setFields(updatedFields);
   };
   return (
-    <>
-      <Header
-        fields={fields}
-        formTitle={formTitle}
-        formDescription={formDescription}
-      />
-      <MainSection
-        fields={fields}
-        addField={addField}
-        formTitle={formTitle}
-        formDescription={formDescription}
-        selectedFieldId={selectedFieldId}
-        setSelectedFieldId={setSelectedFieldId}
-        setFormTitle={setFormTitle}
-        setFormDescription={setFormDescription}
-        updateField={updateField}
-      />
-    </>
+    <FormContext
+      value={{
+        fields,
+        setFields,
+        selectedFieldId,
+        setSelectedFieldId,
+        formTitle,
+        setFormTitle,
+        formDescription,
+        setFormDescription,
+        addField,
+        updateField,
+      }}
+    >
+      <Header />
+      <MainSection />
+    </FormContext>
   );
 }
 

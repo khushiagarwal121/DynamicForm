@@ -1,6 +1,8 @@
-
-// --------------------------------
-function FieldList({ addField }) {
+// -------------------------------
+import { useContext } from "react";
+import { FormContext } from "../context/FormContext";
+function FieldList() {
+  const { addField } = useContext(FormContext);
   const types = ["Text Field", "Checkbox", "Radio Button", "Select Dropdown"];
 
   return (

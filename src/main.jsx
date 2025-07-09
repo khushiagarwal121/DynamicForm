@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NotFoundPage from "./common/NotFoundPage.jsx";
 import FormPreview from "./components/FormPreview.jsx";
+// import { UserContext } from "./context/UserContext.js";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +23,8 @@ const router = createBrowserRouter([
 ]);
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    {/* <UserContext value={{ user, setUser }}> */}
+      <RouterProvider router={router} />
+    {/* </UserContext> */}
   </StrictMode>
 );

@@ -1,17 +1,22 @@
 import { useNavigate } from "react-router-dom";
+// import { useContext } from "react";
+// import { FormContext } from "../context/FormContext";
 
-function Header({ fields, formTitle, formDescription }) {
+function Header() {
   // useNavigate hook returns a function
   const navigate = useNavigate();
-
+  // const { fields, formTitle, formDescription } = useContext(FormContext);
   const handleFormPreview = () => {
-    navigate("/form-preview", {
-      state: {
-        fields,
-        formTitle,
-        formDescription,
-      },
-    });
+    navigate(
+      "/form-preview"
+      //   , {
+      //   state: {
+      //     fields,
+      //     formTitle,
+      //     formDescription,
+      //   },
+      // }
+    );
   };
   return (
     <header className=" bg-white border-b border-gray px-6 py-4 flex flex-col  ">
