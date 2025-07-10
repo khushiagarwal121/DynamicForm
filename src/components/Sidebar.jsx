@@ -34,8 +34,8 @@ function Sidebar() {
       <FieldList addField={addField} setSelectedFieldId={setSelectedFieldId} />
       <h3 className="mt-6 font-semibold">Form Fields</h3>
 
-      {fields.map((field) => (
-        <FormField key={field.id} field={field} />
+      {fields.map((field, index) => (
+        <FormField key={field.id} field={field} index={index} />
       ))}
     </div>
   );
