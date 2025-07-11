@@ -4,7 +4,7 @@ function CenterCanvas({field}) {
   const { updateField } = useContext(FormContext);
   // const selectedField = fields.find((fields) => fields.id === selectedFieldId);
   if (!field)
-    return <div className="w-1/3 p-4">Select a field to configure</div>;
+    return <div className="p-4">Select a field to configure</div>;
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;

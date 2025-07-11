@@ -23,7 +23,7 @@ function FormPreview() {
   }, [fields.length]);
 
   return (
-    <div className="border-l border-gray-300 pl-4">
+    <div className=" pl-4">
       <h2 className="text-2xl font-bold mb-4 text-center">Form Preview</h2>
       <h1 className="text-2xl font-bold mb-4 text-center">
         Form title - {formTitle}

@@ -13,7 +13,7 @@ function Sidebar() {
     setSelectedFieldId,
   } = useContext(FormContext);
   return (
-    <div className="w-1/3 p-4 border-r border-gray-300">
+    <div className="p-4">
       <div className="mb-4">
         <label className="block font-medium">Form Title</label>
         <input
