@@ -12,7 +12,7 @@ function CenterCanvas({field}) {
     updateField({ ...field, [name]: newValue });
   };
   return (
-    <div className="w-1/3">
+    <div >
       <h1 className="text-2xl font-bold mb-4 text-center">
         Field Configuration
       </h1>
