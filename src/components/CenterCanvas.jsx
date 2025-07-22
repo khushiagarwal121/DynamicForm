@@ -13,18 +13,18 @@ function CenterCanvas({field}) {
   };
   return (
     <div >
-      <h1 className="text-2xl font-bold mb-4 text-center">
+      <h1 className="text-xl font-semibold mb-4 text-blue-600 text-center">
         Field Configuration
       </h1>
       <div className="flex flex-col">
         <div className="mb-4 mx-8">
-          <label>Field Label</label>
+          <label className="text-sm font-medium text-gray-700">Field Label</label>
           <input
             type="text"
             name="label"
             value={field.label}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+             className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" 
           />
         </div>
         <div className="mb-4 mx-8">

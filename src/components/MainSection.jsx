@@ -9,17 +9,24 @@ function MainSection() {
   const selectedField = fields.find((f) => f.id === selectedFieldId);
 
   return (
-    <ThreeColumnLayout>
-      <div className="w-1/3">
-        <Sidebar />
-      </div>
-      <div className="w-1/3 border-x px-4">
-        <CenterCanvas field={selectedField} />
-      </div>
-      <div className="w-1/3">
-        <FormPreview />
-      </div>
-    </ThreeColumnLayout>
+<ThreeColumnLayout>
+  <div className="w-1/3">
+    <div className="bg-white rounded-2xl shadow-md p-4 h-full overflow-y-auto">
+      <Sidebar />
+    </div>
+  </div>
+  <div className="w-1/3 px-4">
+    <div className="bg-white rounded-2xl shadow-md p-4 h-full overflow-y-auto">
+      <CenterCanvas field={selectedField} />
+    </div>
+  </div>
+  <div className="w-1/3">
+    <div className="bg-white rounded-2xl shadow-md p-4 h-full overflow-y-auto">
+      <FormPreview />
+    </div>
+  </div>
+</ThreeColumnLayout>
+
   );
 }
 export default MainSection;
